@@ -1,0 +1,2803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Echos of Ink — @echosofink</title>
+
+<meta name="description" content="Echos of Ink — a quiet space for poetry, feelings, midnight thoughts and stories.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#09080a;
+    color:#eee8ec;
+    font-family:"DM Sans",sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+body.locked{
+    overflow:hidden;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    border:0;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+::selection{
+    background:#e6b5a8;
+    color:#171012;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+        radial-gradient(
+            circle at 12% 10%,
+            rgba(116,64,83,.28),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(76,47,72,.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(113,63,58,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #09080a,
+            #151016 45%,
+            #0b090b
+        );
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+    opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.glow{
+    position:fixed;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:-2;
+    background:radial-gradient(
+        circle,
+        rgba(223,154,143,.06),
+        transparent 68%
+    );
+    transform:translate(-50%,-50%);
+    transition:transform .15s ease;
+}
+
+/* =========================================================
+   AUTH GATE
+========================================================= */
+
+#authGate{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    overflow:auto;
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(179,94,81,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(102,54,77,.18),
+            transparent 35%
+        ),
+        #09070a;
+}
+
+#authGate.hidden{
+    display:none;
+}
+
+.auth-wrap{
+    width:min(450px,100%);
+    animation:authIn .7s ease both;
+}
+
+@keyframes authIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.auth-brand{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.auth-logo{
+    width:68px;
+    height:68px;
+    margin:auto;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(235,188,176,.32);
+    border-radius:50%;
+    color:#e8b6a9;
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
+    font-style:italic;
+    background:rgba(255,255,255,.025);
+    box-shadow:
+        0 0 45px rgba(204,127,113,.08),
+        inset 0 0 30px rgba(255,255,255,.02);
+}
+
+.auth-brand h1{
+    margin-top:14px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:43px;
+    font-weight:500;
+}
+
+.auth-brand p{
+    margin-top:4px;
+    color:#9d8e98;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.auth-card{
+    padding:29px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:26px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,21,29,.94),
+            rgba(14,10,14,.97)
+        );
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.62),
+        inset 0 1px 0 rgba(255,255,255,.04);
+    backdrop-filter:blur(22px);
+}
+
+.auth-tabs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+    padding:5px;
+    margin-bottom:25px;
+    border-radius:14px;
+    background:rgba(255,255,255,.04);
+}
+
+.auth-tab{
+    padding:11px;
+    border-radius:10px;
+    background:transparent;
+    color:#968791;
+    cursor:pointer;
+    font-size:12px;
+    transition:.25s;
+}
+
+.auth-tab.active{
+    color:#fff4ef;
+    background:rgba(229,177,165,.12);
+}
+
+.auth-form{
+    display:none;
+}
+
+.auth-form.active{
+    display:block;
+}
+
+.auth-form h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:31px;
+    font-weight:500;
+}
+
+.auth-subtitle{
+    margin:5px 0 20px;
+    color:#968891;
+    font-size:12px;
+}
+
+.auth-field{
+    margin-bottom:14px;
+}
+
+.auth-field label{
+    display:block;
+    margin-bottom:7px;
+    color:#cfc1c8;
+    font-size:11px;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.auth-field input{
+    width:100%;
+    padding:13px 43px 13px 14px;
+    outline:none;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:12px;
+    background:rgba(0,0,0,.25);
+    color:#f7eeeb;
+    font-size:13px;
+    transition:.25s;
+}
+
+.auth-field input::placeholder{
+    color:#635961;
+}
+
+.auth-field input:focus{
+    border-color:rgba(232,182,169,.48);
+    box-shadow:0 0 0 3px rgba(232,182,169,.06);
+}
+
+.password-toggle{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#88777f;
+    background:none;
+    font-size:11px;
+}
+
+.auth-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:4px 0 16px;
+    color:#7f7079;
+    font-size:10px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.remember input{
+    accent-color:#dca99e;
+}
+
+.auth-submit{
+    width:100%;
+    padding:13px;
+    border:1px solid rgba(235,184,171,.28);
+    border-radius:12px;
+    cursor:pointer;
+    color:#201416;
+    background:#e7b5a8;
+    font-weight:600;
+    font-size:12px;
+    transition:.25s;
+}
+
+.auth-submit:hover{
+    transform:translateY(-2px);
+    background:#f0c1b4;
+    box-shadow:0 12px 30px rgba(0,0,0,.3);
+}
+
+.auth-note{
+    margin-top:17px;
+    text-align:center;
+    color:#645860;
+    font-size:9.5px;
+    line-height:1.7;
+}
+
+.auth-footer{
+    margin-top:18px;
+    text-align:center;
+    color:#62555e;
+    font-size:10px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+#toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    z-index:100000;
+    max-width:90%;
+    padding:11px 17px;
+    border:1px solid rgba(232,182,169,.2);
+    border-radius:100px;
+    background:rgba(25,16,21,.96);
+    color:#f3e7e3;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+    font-size:11px;
+    transform:translate(-50%,25px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+#toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#siteShell{
+    display:none;
+}
+
+#siteShell.unlocked{
+    display:block;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:18px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(9,8,10,.67);
+    backdrop-filter:blur(18px);
+}
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:17px;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    font-style:italic;
+}
+
+.logo-dot{
+    display:inline-block;
+    width:5px;
+    height:5px;
+    margin-left:3px;
+    border-radius:50%;
+    background:#d99e92;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#988c96;
+    font-size:10px;
+    letter-spacing:2px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.account{
+    position:relative;
+}
+
+.account-trigger{
+    width:40px;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:3px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:50%;
+    background:rgba(255,255,255,.04);
+}
+
+.account-trigger span{
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#ddd2d9;
+}
+
+.account-dropdown{
+    position:absolute;
+    top:50px;
+    left:0;
+    width:205px;
+    padding:9px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    background:rgba(19,14,19,.97);
+    box-shadow:0 20px 55px rgba(0,0,0,.5);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-7px);
+    transition:.25s;
+}
+
+.account.open .account-dropdown{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.account-dropdown a,
+.account-dropdown button{
+    display:block;
+    width:100%;
+    padding:11px 12px;
+    border-radius:10px;
+    background:none;
+    text-align:left;
+    color:#c5b8c0;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.account-dropdown a:hover,
+.account-dropdown button:hover{
+    background:rgba(255,255,255,.07);
+    color:white;
+}
+
+.mobile-menu-btn{
+    display:none;
+    width:40px;
+    height:40px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    background:rgba(255,255,255,.04);
+    color:white;
+    cursor:pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:130px 20px 80px;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:1px;
+    height:70px;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(226,183,172,.35)
+    );
+}
+
+.eyebrow{
+    margin-bottom:27px;
+    color:#917c8d;
+    text-transform:uppercase;
+    letter-spacing:6px;
+    font-size:9px;
+}
+
+.hero h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(78px,13vw,155px);
+    font-weight:400;
+    font-style:italic;
+    line-height:.76;
+    letter-spacing:-5px;
+}
+
+.hero h1 span{
+    display:block;
+    color:#d9b2aa;
+}
+
+.hero-line{
+    width:100px;
+    height:1px;
+    margin:38px auto;
+    background:#786573;
+}
+
+.hero-text{
+    max-width:620px;
+    margin:auto;
+    color:#b3a6b0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+    font-style:italic;
+}
+
+.profile{
+    margin-top:25px;
+    color:#887a85;
+    font-size:11px;
+}
+
+.profile strong{
+    color:#d1bec5;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:11px;
+    flex-wrap:wrap;
+    margin-top:28px;
+}
+
+.hero-btn{
+    padding:12px 24px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:100px;
+    background:rgba(255,255,255,.04);
+    color:#ddd1d7;
+    font-size:11px;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.1);
+}
+
+.hero-btn.primary{
+    border-color:rgba(228,175,163,.32);
+    background:rgba(228,175,163,.1);
+    color:#e9c3ba;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+    width:min(1100px,100%);
+    margin:auto;
+    padding:115px 30px;
+}
+
+.section-label{
+    margin-bottom:9px;
+    color:#897584;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:9px;
+}
+
+.section-title{
+    margin-bottom:55px;
+    text-align:center;
+    font-family:"Cormorant Garamond",serif;
+    font-size:60px;
+    font-weight:400;
+    font-style:italic;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.writing-tools{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.search-box{
+    width:min(310px,100%);
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:100px;
+    outline:none;
+    background:rgba(255,255,255,.035);
+    color:white;
+    font-size:11px;
+}
+
+.search-box input::placeholder{
+    color:#72656f;
+}
+
+.filters{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    padding:8px 12px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:100px;
+    background:transparent;
+    color:#8f818b;
+    cursor:pointer;
+    font-size:9px;
+}
+
+.filter.active,
+.filter:hover{
+    color:#e8d9de;
+    background:rgba(255,255,255,.06);
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    min-height:280px;
+    padding:32px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:22px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.052),
+        rgba(255,255,255,.018)
+    );
+    transition:.45s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    top:-80px;
+    right:-70px;
+    border-radius:50%;
+    background:rgba(210,151,139,.07);
+    filter:blur(4px);
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,255,255,.18);
+    box-shadow:0 20px 55px rgba(0,0,0,.22);
+}
+
+.card-number{
+    color:#695b66;
+    font-family:"Cormorant Garamond",serif;
+    font-size:13px;
+}
+
+.card-icon{
+    margin:17px 0;
+    color:#c69b93;
+    font-size:24px;
+}
+
+.card h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    font-weight:500;
+    font-style:italic;
+}
+
+.card p{
+    margin-top:9px;
+    color:#91848e;
+    font-size:12px;
+}
+
+.card-bottom{
+    position:absolute;
+    bottom:27px;
+    left:32px;
+    right:32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.read-btn{
+    color:#d2b5b0;
+    background:none;
+    cursor:pointer;
+    font-size:10px;
+}
+
+.heart-btn{
+    cursor:pointer;
+    color:#75656e;
+    background:none;
+    font-size:17px;
+    transition:.2s;
+}
+
+.heart-btn.liked{
+    color:#e2a99e;
+    transform:scale(1.12);
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote-section{
+    width:min(900px,100%);
+}
+
+.featured{
+    position:relative;
+    padding:78px 45px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.09);
+    border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+.quote-mark{
+    color:#715e6b;
+    font-family:"Cormorant Garamond",serif;
+    font-size:75px;
+    line-height:.5;
+}
+
+.featured-quote{
+    margin-top:15px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(30px,5vw,52px);
+    font-style:italic;
+    line-height:1.25;
+}
+
+.featured-by{
+    margin-top:24px;
+    color:#806d7b;
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   POETRY
+========================================================= */
+
+.poetry-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.poem{
+    padding:28px;
+    min-height:310px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+    transition:.35s;
+}
+
+.poem:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.045);
+}
+
+.poem-tag{
+    color:#8e717b;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.poem h3{
+    margin:20px 0 15px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    font-weight:500;
+    font-style:italic;
+}
+
+.poem-text{
+    white-space:pre-line;
+    color:#a99ca5;
+    font-family:"Cormorant Garamond",serif;
+    font-size:16px;
+    line-height:1.8;
+}
+
+.poem-author{
+    margin-top:22px;
+    color:#756773;
+    font-size:9px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:65px;
+    align-items:center;
+}
+
+.about .section-label{
+    text-align:left;
+}
+
+.about h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:68px;
+    font-weight:400;
+    font-style:italic;
+}
+
+.about p{
+    margin-top:17px;
+    color:#958892;
+    font-size:13px;
+    line-height:2;
+}
+
+.about-box{
+    position:relative;
+    padding:55px 30px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:26px;
+    background:rgba(255,255,255,.035);
+}
+
+.about-symbol{
+    font-family:"Cormorant Garamond",serif;
+    font-size:100px;
+    font-style:italic;
+    color:#c29a93;
+}
+
+.about-box small{
+    color:#756671;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.about-box h3{
+    margin-top:4px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    font-weight:500;
+}
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.instagram{
+    text-align:center;
+    padding-top:145px;
+    padding-bottom:145px;
+}
+
+.instagram h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(46px,7vw,80px);
+    font-weight:400;
+    font-style:italic;
+}
+
+.instagram p{
+    margin:17px 0 25px;
+    color:#8f818b;
+    font-size:12px;
+}
+
+.insta{
+    display:inline-block;
+    padding:14px 28px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:100px;
+    background:linear-gradient(
+        120deg,
+        rgba(104,57,108,.7),
+        rgba(164,91,126,.65),
+        rgba(184,138,99,.6)
+    );
+    font-size:11px;
+    transition:.3s;
+}
+
+.insta:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+.signout{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:3000;
+    padding:9px 14px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:100px;
+    background:rgba(17,11,15,.8);
+    color:#8f818a;
+    cursor:pointer;
+    backdrop-filter:blur(12px);
+    font-size:9px;
+    transition:.25s;
+}
+
+.signout:hover{
+    color:#eee;
+    border-color:rgba(229,177,164,.3);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:48px 20px;
+    border-top:1px solid rgba(255,255,255,.07);
+    text-align:center;
+    color:#635761;
+    font-size:10px;
+}
+
+footer strong{
+    color:#9d8996;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:9990;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+    background:rgba(3,2,4,.75);
+    backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+}
+
+.modal.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-card{
+    width:min(650px,100%);
+    max-height:85vh;
+    overflow:auto;
+    padding:38px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+    background:#151015;
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+    transform:translateY(15px);
+    transition:.3s;
+}
+
+.modal.open .modal-card{
+    transform:translateY(0);
+}
+
+.modal-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-tag{
+    color:#9c7d86;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.modal-close{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+    color:#c7bac1;
+    cursor:pointer;
+}
+
+.modal h2{
+    margin:25px 0 18px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:48px;
+    font-style:italic;
+    font-weight:400;
+}
+
+.modal-poem{
+    white-space:pre-line;
+    color:#b9acb5;
+    font-family:"Cormorant Garamond",serif;
+    font-size:19px;
+    line-height:1.9;
+}
+
+.copy-poem{
+    margin-top:28px;
+    padding:10px 17px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:100px;
+    background:rgba(255,255,255,.05);
+    color:#cdbdc5;
+    cursor:pointer;
+    font-size:10px;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu-btn{
+        display:block;
+    }
+
+    .nav-right{
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    .mobile-links{
+        position:absolute;
+        top:77px;
+        left:20px;
+        right:20px;
+        display:none;
+        padding:10px;
+        border:1px solid rgba(255,255,255,.1);
+        border-radius:16px;
+        background:rgba(15,11,15,.97);
+    }
+
+    .mobile-links.open{
+        display:block;
+    }
+
+    .mobile-links a{
+        display:block;
+        padding:13px;
+        color:#a999a4;
+        font-size:11px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .poetry-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .writing-tools{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .filters{
+        justify-content:center;
+    }
+}
+
+@media(max-width:550px){
+
+    .auth-card{
+        padding:22px;
+    }
+
+    .auth-brand h1{
+        font-size:36px;
+    }
+
+    .hero h1{
+        font-size:72px;
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        font-size:19px;
+    }
+
+    section{
+        padding:85px 20px;
+    }
+
+    .section-title{
+        font-size:47px;
+    }
+
+    .featured{
+        padding:55px 20px;
+    }
+
+    .about h2{
+        font-size:53px;
+    }
+
+    .modal-card{
+        padding:25px;
+    }
+
+    .modal h2{
+        font-size:39px;
+    }
+
+    .signout{
+        right:12px;
+        bottom:12px;
+    }
+}
+
+</style>
+</head>
+
+<body class="locked">
+
+<div class="noise"></div>
+<div class="glow" id="mouseGlow"></div>
+
+<!-- =======================================================
+     AUTH
+======================================================= -->
+
+<div id="authGate">
+
+    <div class="auth-wrap">
+
+        <div class="auth-brand">
+
+            <div class="auth-logo">E</div>
+
+            <h1>Echos of Ink</h1>
+
+            <p>Words · Feelings · Stories</p>
+
+        </div>
+
+        <div class="auth-card">
+
+            <div class="auth-tabs">
+
+                <button class="auth-tab active" id="loginTab">
+                    Login
+                </button>
+
+                <button class="auth-tab" id="registerTab">
+                    Register
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <form class="auth-form active" id="loginForm">
+
+                <h2>Welcome back.</h2>
+
+                <p class="auth-subtitle">
+                    Enter the quiet side of the internet.
+                </p>
+
+                <div class="auth-field">
+
+                    <label>Email</label>
+
+                    <input
+                        id="loginEmail"
+                        type="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+                <div class="auth-field">
+
+                    <label>Password</label>
+
+                    <div class="input-wrap">
+
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            placeholder="Your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="loginPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="auth-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                            checked
+                        >
+
+                        Remember me
+
+                    </label>
+
+                    <span>
+                        Front-end demo
+                    </span>
+
+                </div>
+
+                <button class="auth-submit">
+                    Login & Enter
+                </button>
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <form class="auth-form" id="registerForm">
+
+                <h2>Create your space.</h2>
+
+                <p class="auth-subtitle">
+                    Make a little corner for your thoughts.
+                </p>
+
+                <div class="auth-field">
+
+                    <label>Your name</label>
+
+                    <input
+                        id="registerName"
+                        type="text"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+                <div class="auth-field">
+
+                    <label>Email</label>
+
+                    <input
+                        id="registerEmail"
+                        type="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+                <div class="auth-field">
+
+                    <label>Password</label>
+
+                    <div class="input-wrap">
+
+                        <input
+                            id="registerPassword"
+                            type="password"
+                            placeholder="Minimum 6 characters"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="registerPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button class="auth-submit">
+                    Register & Enter
+                </button>
+
+            </form>
+
+            <p class="auth-note">
+                Demo authentication only. No real password or
+                account database is connected to this website.
+            </p>
+
+        </div>
+
+        <div class="auth-footer">
+            © 2026 Echos of Ink · @echosofink
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<!-- =======================================================
+     MAIN WEBSITE
+======================================================= -->
+
+<div id="siteShell">
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="nav-left">
+
+            <div class="account" id="account">
+
+                <button
+                    class="account-trigger"
+                    id="accountTrigger"
+                    aria-label="Account menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="account-dropdown">
+
+                    <a href="#about" id="profileLink">
+                        ♡ About the writer
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/echosofink/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        ◎ Instagram
+                    </a>
+
+                    <button id="menuSignout">
+                        ↪ Sign out
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="logo">
+                Echos of Ink<span class="logo-dot"></span>
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="#writings">WRITINGS</a>
+            <a href="#poetry">POETRY</a>
+            <a href="#about">ABOUT</a>
+            <a href="#instagram">INSTAGRAM</a>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <div class="mobile-links" id="mobileLinks">
+
+            <a href="#writings">WRITINGS</a>
+            <a href="#poetry">POETRY</a>
+            <a href="#about">ABOUT</a>
+            <a href="#instagram">INSTAGRAM</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+                A space for words & feelings
+            </div>
+
+            <h1>
+                Echos
+                <span>of Ink</span>
+            </h1>
+
+            <div class="hero-line"></div>
+
+            <p class="hero-text">
+                Where thoughts find their way onto paper,
+                feelings become words,
+                and every story leaves an echo.
+            </p>
+
+            <div class="profile">
+                A creative space by <strong>Shifs</strong>
+            </div>
+
+            <div class="hero-actions">
+
+                <a
+                    href="#writings"
+                    class="hero-btn primary"
+                >
+                    Explore the writings ↓
+                </a>
+
+                <a
+                    href="https://www.instagram.com/echosofink/"
+                    target="_blank"
+                    rel="noopener"
+                    class="hero-btn"
+                >
+                    @echosofink ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- WRITINGS -->
+
+    <section id="writings" class="reveal">
+
+        <div class="section-label">
+            Between the lines
+        </div>
+
+        <h2 class="section-title">
+            What lives here
+        </h2>
+
+
+        <div class="writing-tools">
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search writings..."
+                >
+
+            </div>
+
+            <div class="filters">
+
+                <button class="filter active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter" data-filter="poetry">
+                    Poetry
+                </button>
+
+                <button class="filter" data-filter="thoughts">
+                    Thoughts
+                </button>
+
+                <button class="filter" data-filter="stories">
+                    Stories
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="cards" id="writingCards">
+
+
+            <article
+                class="card"
+                data-category="poetry"
+                data-title="Poetry"
+            >
+
+                <div class="card-number">01</div>
+
+                <div class="card-icon">✒</div>
+
+                <h3>Poetry</h3>
+
+                <p>
+                    Thoughts shaped into verses,
+                    emotions translated into words,
+                    and feelings given somewhere to exist.
+                </p>
+
+                <div class="card-bottom">
+
+                    <button
+                        class="read-btn"
+                        data-poem="poetry"
+                    >
+                        Read something →
+                    </button>
+
+                    <button class="heart-btn">
+                        ♡
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="card"
+                data-category="thoughts"
+                data-title="Midnight Thoughts"
+            >
+
+                <div class="card-number">02</div>
+
+                <div class="card-icon">☾</div>
+
+                <h3>Midnight Thoughts</h3>
+
+                <p>
+                    The thoughts that arrive quietly
+                    when everything else has gone silent.
+                </p>
+
+                <div class="card-bottom">
+
+                    <button
+                        class="read-btn"
+                        data-poem="midnight"
+                    >
+                        Read something →
+                    </button>
+
+                    <button class="heart-btn">
+                        ♡
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="card"
+                data-category="thoughts"
+                data-title="Feelings"
+            >
+
+                <div class="card-number">03</div>
+
+                <div class="card-icon">♡</div>
+
+                <h3>Feelings</h3>
+
+                <p>
+                    Small moments, complicated emotions,
+                    and everything difficult to say aloud.
+                </p>
+
+                <div class="card-bottom">
+
+                    <button
+                        class="read-btn"
+                        data-poem="feelings"
+                    >
+                        Read something →
+                    </button>
+
+                    <button class="heart-btn">
+                        ♡
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="card"
+                data-category="stories"
+                data-title="Stories"
+            >
+
+                <div class="card-number">04</div>
+
+                <div class="card-icon">📖</div>
+
+                <h3>Stories</h3>
+
+                <p>
+                    Stories inspired by life,
+                    imagination, memories,
+                    and the spaces between them.
+                </p>
+
+                <div class="card-bottom">
+
+                    <button
+                        class="read-btn"
+                        data-poem="stories"
+                    >
+                        Read something →
+                    </button>
+
+                    <button class="heart-btn">
+                        ♡
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED QUOTE -->
+
+    <section class="quote-section reveal">
+
+        <div class="featured">
+
+            <div class="quote-mark">
+                “
+            </div>
+
+            <div class="featured-quote">
+                She wrote what she couldn't say,
+                and somehow the silence understood.
+            </div>
+
+            <div class="featured-by">
+                Echos of Ink
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- POETRY -->
+
+    <section id="poetry" class="reveal">
+
+        <div class="section-label">
+            A few words
+        </div>
+
+        <h2 class="section-title">
+            From the ink
+        </h2>
+
+
+        <div class="poetry-grid">
+
+
+            <article class="poem">
+
+                <div class="poem-tag">
+                    English · 01
+                </div>
+
+                <h3>
+                    Things I Never Said
+                </h3>
+
+                <div class="poem-text">
+I kept a thousand words
+behind a quiet smile.
+
+Some feelings don't disappear,
+they simply learn
+how to live in silence.
+
+And maybe that's why
+some goodbyes
+never really end.
+                </div>
+
+                <div class="poem-author">
+                    — Echos of Ink
+                </div>
+
+            </article>
+
+
+            <article class="poem">
+
+                <div class="poem-tag">
+                    Hindi · 02
+                </div>
+
+                <h3>
+                    ख़ामोशी
+                </h3>
+
+                <div class="poem-text">
+कुछ बातें कही नहीं जातीं,
+बस महसूस होती हैं।
+
+कुछ लोग दूर होकर भी
+दिल के सबसे करीब रहते हैं।
+
+और कुछ यादें...
+वक़्त के साथ पुरानी नहीं,
+बस और गहरी हो जाती हैं।
+                </div>
+
+                <div class="poem-author">
+                    — Echos of Ink
+                </div>
+
+            </article>
+
+
+            <article class="poem">
+
+                <div class="poem-tag">
+                    Urdu · 03
+                </div>
+
+                <h3>
+                    ایک خاموشی
+                </h3>
+
+                <div class="poem-text">
+کچھ لفظ لبوں تک آ کر
+خاموش ہو جاتے ہیں،
+
+اور کچھ احساس
+دل میں رہ کر
+عمر بھر بولتے رہتے ہیں۔
+                </div>
+
+                <div class="poem-author">
+                    — Echos of Ink
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="reveal">
+
+        <div class="about">
+
+            <div>
+
+                <div class="section-label">
+                    The person behind the words
+                </div>
+
+                <h2>
+                    Meet Shifs.
+                </h2>
+
+                <p>
+                    Echos of Ink is a little corner created
+                    for thoughts, writing, poetry and
+                    everything that deserves to be expressed.
+                </p>
+
+                <p>
+                    A collection of words written from
+                    different moments, moods and memories.
+                </p>
+
+                <p>
+                    Sometimes the page says what the heart
+                    doesn't know how to.
+                </p>
+
+            </div>
+
+
+            <div class="about-box">
+
+                <div class="about-symbol">
+                    ✒
+                </div>
+
+                <p>
+                    Written with feeling.
+                </p>
+
+                <br>
+
+                <small>
+                    Managed by
+                </small>
+
+                <h3>
+                    Khushieee ♡
+                </h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INSTAGRAM -->
+
+    <section
+        class="instagram reveal"
+        id="instagram"
+    >
+
+        <div class="section-label">
+            Follow the journey
+        </div>
+
+        <h2>
+            Find us on Instagram.
+        </h2>
+
+        <p>
+            Poetry, thoughts, stories & little pieces of life.
+        </p>
+
+        <a
+            class="insta"
+            href="https://www.instagram.com/echosofink/"
+            target="_blank"
+            rel="noopener"
+        >
+            ◎ @echosofink ↗
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            © 2026 <strong>Echos of Ink</strong>
+        </div>
+
+        <br>
+
+        <div>
+            A space created with words · Managed by Khushieee
+        </div>
+
+    </footer>
+
+
+    <!-- SIGN OUT -->
+
+    <button
+        class="signout"
+        id="signout"
+    >
+        Sign out
+    </button>
+
+</div>
+
+
+<!-- =======================================================
+     POEM MODAL
+======================================================= -->
+
+<div class="modal" id="poemModal">
+
+    <div class="modal-card">
+
+        <div class="modal-top">
+
+            <div class="modal-tag" id="modalTag">
+                Echos of Ink
+            </div>
+
+            <button
+                class="modal-close"
+                id="modalClose"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <h2 id="modalTitle">
+            Poetry
+        </h2>
+
+        <div
+            class="modal-poem"
+            id="modalPoem"
+        ></div>
+
+        <button
+            class="copy-poem"
+            id="copyPoem"
+        >
+            Copy this piece
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   BASIC ELEMENTS
+========================================================= */
+
+const authGate = document.getElementById("authGate");
+const siteShell = document.getElementById("siteShell");
+const toast = document.getElementById("toast");
+
+const STORAGE_KEY = "echosInkLoggedIn";
+const NAME_KEY = "echosInkName";
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2200);
+}
+
+
+/* =========================================================
+   AUTH TABS
+========================================================= */
+
+const loginTab = document.getElementById("loginTab");
+const registerTab = document.getElementById("registerTab");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+function showAuth(type){
+
+    const login = type === "login";
+
+    loginTab.classList.toggle("active",login);
+    registerTab.classList.toggle("active",!login);
+
+    loginForm.classList.toggle("active",login);
+    registerForm.classList.toggle("active",!login);
+}
+
+loginTab.addEventListener("click",() => showAuth("login"));
+registerTab.addEventListener("click",() => showAuth("register"));
+
+
+/* =========================================================
+   PASSWORD SHOW / HIDE
+========================================================= */
+
+document.querySelectorAll(".password-toggle").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        const input = document.getElementById(
+            button.dataset.target
+        );
+
+        if(input.type === "password"){
+
+            input.type = "text";
+            button.textContent = "Hide";
+
+        }else{
+
+            input.type = "password";
+            button.textContent = "Show";
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   UNLOCK
+========================================================= */
+
+function unlockSite(name){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        "true"
+    );
+
+    if(name){
+        localStorage.setItem(
+            NAME_KEY,
+            name
+        );
+    }
+
+    document.body.classList.remove("locked");
+
+    authGate.classList.add("hidden");
+
+    siteShell.classList.add("unlocked");
+
+    showToast(
+        name
+        ? `Welcome, ${name} ♡`
+        : "Welcome back to Echos of Ink ♡"
+    );
+
+    startReveal();
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+loginForm.addEventListener("submit",event => {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    if(!email || !password){
+
+        showToast("Please fill in all fields.");
+
+        return;
+    }
+
+    unlockSite();
+
+});
+
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
+registerForm.addEventListener("submit",event => {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("registerName").value.trim();
+
+    const email =
+        document.getElementById("registerEmail").value.trim();
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    if(name.length < 2){
+
+        showToast("Please enter your name.");
+
+        return;
+    }
+
+    if(password.length < 6){
+
+        showToast("Password must be at least 6 characters.");
+
+        return;
+    }
+
+    unlockSite(name);
+
+});
+
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+function signOut(){
+
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(NAME_KEY);
+
+    siteShell.classList.remove("unlocked");
+
+    authGate.classList.remove("hidden");
+
+    document.body.classList.add("locked");
+
+    showAuth("login");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    showToast("Signed out successfully.");
+
+}
+
+document.getElementById("signout")
+    .addEventListener("click",signOut);
+
+document.getElementById("menuSignout")
+    .addEventListener("click",signOut);
+
+
+/* =========================================================
+   ACCOUNT MENU
+========================================================= */
+
+const account =
+    document.getElementById("account");
+
+const accountTrigger =
+    document.getElementById("accountTrigger");
+
+accountTrigger.addEventListener("click",event => {
+
+    event.stopPropagation();
+
+    account.classList.toggle("open");
+
+});
+
+document.addEventListener("click",event => {
+
+    if(!account.contains(event.target)){
+
+        account.classList.remove("open");
+
+    }
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
+
+const mobileLinks =
+    document.getElementById("mobileLinks");
+
+mobileMenuBtn.addEventListener("click",() => {
+
+    mobileLinks.classList.toggle("open");
+
+});
+
+mobileLinks.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click",() => {
+
+        mobileLinks.classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+const filters =
+    document.querySelectorAll(".filter");
+
+const cards =
+    document.querySelectorAll(".card");
+
+filters.forEach(filter => {
+
+    filter.addEventListener("click",() => {
+
+        filters.forEach(f =>
+            f.classList.remove("active")
+        );
+
+        filter.classList.add("active");
+
+        const category =
+            filter.dataset.filter;
+
+        cards.forEach(card => {
+
+            if(
+                category === "all" ||
+                card.dataset.category === category
+            ){
+
+                card.style.display = "";
+
+            }else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+searchInput.addEventListener("input",() => {
+
+    const query =
+        searchInput.value.toLowerCase().trim();
+
+    cards.forEach(card => {
+
+        const title =
+            card.dataset.title.toLowerCase();
+
+        const text =
+            card.innerText.toLowerCase();
+
+        card.style.display =
+            title.includes(query) ||
+            text.includes(query)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+
+/* =========================================================
+   HEARTS
+========================================================= */
+
+document.querySelectorAll(".heart-btn").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        button.classList.toggle("liked");
+
+        button.textContent =
+            button.classList.contains("liked")
+            ? "♥"
+            : "♡";
+
+        if(button.classList.contains("liked")){
+
+            showToast("Saved to your little corner ♡");
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   POEMS
+========================================================= */
+
+const poems = {
+
+    poetry:{
+
+        tag:"Poetry · A little piece of silence",
+
+        title:"Things I Never Said",
+
+        text:
+`I kept a thousand words
+behind a quiet smile.
+
+Some feelings don't disappear,
+they simply learn
+how to live in silence.
+
+And maybe that's why
+some goodbyes
+never really end.`
+
+    },
+
+    midnight:{
+
+        tag:"Midnight Thoughts",
+
+        title:"At 2:17 AM",
+
+        text:
+`At 2:17 in the morning,
+the world is quiet enough
+to hear your own thoughts.
+
+You remember people,
+old conversations,
+unfinished sentences.
+
+And suddenly,
+the things you were
+too busy to feel
+become impossible to ignore.`
+
+    },
+
+    feelings:{
+
+        tag:"Feelings",
+
+        title:"ख़ामोशी",
+
+        text:
+`कुछ बातें कही नहीं जातीं,
+बस महसूस होती हैं।
+
+कुछ लोग दूर होकर भी
+दिल के सबसे करीब रहते हैं।
+
+और कुछ यादें...
+वक़्त के साथ पुरानी नहीं,
+बस और गहरी हो जाती हैं।`
+
+    },
+
+    stories:{
+
+        tag:"Stories · A beginning",
+
+        title:"The Last Page",
+
+        text:
+`He closed the book,
+but didn't leave the room.
+
+Some stories don't end
+when the last page ends.
+
+They stay behind
+in the places we visited,
+in the people we became,
+and in the silence
+between one chapter
+and the next.`
+
+    }
+
+};
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modal =
+    document.getElementById("poemModal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalTag =
+    document.getElementById("modalTag");
+
+const modalPoem =
+    document.getElementById("modalPoem");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+let currentPoem = "";
+
+document.querySelectorAll(".read-btn").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        const poem =
+            poems[button.dataset.poem];
+
+        if(!poem) return;
+
+        currentPoem = poem.text;
+
+        modalTag.textContent =
+            poem.tag;
+
+        modalTitle.textContent =
+            poem.title;
+
+        modalPoem.textContent =
+            poem.text;
+
+        modal.classList.add("open");
+
+        document.body.classList.add("locked");
+
+    });
+
+});
+
+function closeModal(){
+
+    modal.classList.remove("open");
+
+    if(
+        localStorage.getItem(STORAGE_KEY) === "true"
+    ){
+
+        document.body.classList.remove("locked");
+
+    }
+
+}
+
+modalClose.addEventListener("click",closeModal);
+
+modal.addEventListener("click",event => {
+
+    if(event.target === modal){
+
+        closeModal();
+
+    }
+
+});
+
+document.addEventListener("keydown",event => {
+
+    if(event.key === "Escape"){
+
+        closeModal();
+
+    }
+
+});
+
+
+/* =========================================================
+   COPY POEM
+========================================================= */
+
+document.getElementById("copyPoem")
+.addEventListener("click",async() => {
+
+    try{
+
+        await navigator.clipboard.writeText(
+            currentPoem
+        );
+
+        showToast("Copied to clipboard ✦");
+
+    }catch(error){
+
+        showToast("Copy isn't available here.");
+
+    }
+
+});
+
+
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
+
+function startReveal(){
+
+    const elements =
+        document.querySelectorAll(".reveal");
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    elements.forEach(element =>
+        observer.observe(element)
+    );
+
+}
+
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+const mouseGlow =
+    document.getElementById("mouseGlow");
+
+if(window.matchMedia("(pointer:fine)").matches){
+
+    document.addEventListener("mousemove",event => {
+
+        mouseGlow.style.left =
+            event.clientX + "px";
+
+        mouseGlow.style.top =
+            event.clientY + "px";
+
+    });
+
+}
+
+
+/* =========================================================
+   REMEMBER LOGIN
+========================================================= */
+
+if(
+    localStorage.getItem(STORAGE_KEY) === "true"
+){
+
+    document.body.classList.remove("locked");
+
+    authGate.classList.add("hidden");
+
+    siteShell.classList.add("unlocked");
+
+    startReveal();
+
+}else{
+
+    document.body.classList.add("locked");
+
+    authGate.classList.remove("hidden");
+
+    siteShell.classList.remove("unlocked");
+
+}
+
+
+/* =========================================================
+   WELCOME NAME
+========================================================= */
+
+const savedName =
+    localStorage.getItem(NAME_KEY);
+
+if(savedName){
+
+    const profile =
+        document.querySelector(".profile");
+
+    if(profile){
+
+        profile.innerHTML =
+            `Welcome back, <strong>${savedName}</strong> · A creative space by Shifs`;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
