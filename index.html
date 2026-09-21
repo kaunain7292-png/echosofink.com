@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EchosOfInk — @echoesofink19</title>
+<meta name="description" content="EchosOfInk — poetry, feelings, midnight thoughts and stories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:#09080a;color:#eee8ec;font-family:"Cormorant Garamond",serif;line-height:1.6;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 12% 10%,#743f5328,transparent 28%),radial-gradient(circle at 88% 20%,#4c2f4828,transparent 30%),linear-gradient(135deg,#09080a,#171016 45%,#0b090b)}
+a{text-decoration:none;color:inherit}button,input,textarea{font:inherit}button{border:0}
+::selection{background:#e6b5a8;color:#171012}.hidden{display:none!important}
+#authGate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#09070af5}
+.auth{width:min(460px,100%)}.brand{text-align:center;margin-bottom:20px}.brand h1,.hero h1,.section-title,footer strong{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500}
+.brand h1{font-size:48px;line-height:1;letter-spacing:.2px}.brand p{color:#968792;font-size:9px;letter-spacing:4px;text-transform:uppercase;margin-top:7px}
+.card{border:1px solid #ffffff14;border-radius:26px;padding:28px;background:linear-gradient(145deg,#25151df5,#0e0a0ef8);box-shadow:0 30px 90px #0009}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;background:#ffffff09;border-radius:14px;margin-bottom:22px}.tab{padding:11px;border-radius:10px;background:none;color:#988a93;cursor:pointer;font-size:12px}.tab.active{background:#e5b1a51f;color:#fff}
+.form{display:none}.form.active{display:block}.form h2{font:500 32px "Cormorant Garamond",serif}.sub{color:#8e8089;font-size:11px;margin:4px 0 18px}
+.field{margin-bottom:13px}.field label{display:block;color:#cdbfc6;font-size:11px;margin-bottom:6px}.field input,.postbox textarea,.search{width:100%;outline:0;border:1px solid #ffffff12;border-radius:12px;background:#00000030;color:#fff;padding:13px;font-size:13px}.field input:focus,.postbox textarea:focus{border-color:#e6b5a866}
+.primary{width:100%;padding:13px;border-radius:12px;background:#e7b5a8;color:#201416;cursor:pointer;font-weight:700;font-size:12px}.divider{text-align:center;color:#665963;font-size:9px;letter-spacing:2px;margin:17px 0}
+.social{display:grid;grid-template-columns:1fr 1fr;gap:9px}.social button{padding:12px;border:1px solid #ffffff14;border-radius:12px;background:#ffffff08;color:#eee;cursor:pointer}.apple-icon{width:15px;height:15px;vertical-align:middle;margin-right:5px}
+.note{text-align:center;color:#675b64;font-size:9px;margin-top:16px;line-height:1.6}
+#site{display:none}#site.on{display:block}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff0d;background:#09080acc;backdrop-filter:blur(18px)}
+.logo{font:italic 600 31px "Cormorant Garamond",serif;white-space:nowrap;letter-spacing:.3px}.logo-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#d99e92;margin-left:3px}
+.navlinks{display:flex;gap:27px;align-items:center}.navlinks a{color:#988c96;font-family:"DM Sans",sans-serif;font-size:9px;letter-spacing:2.5px}.navuser{color:#cbbac2;font-family:"DM Sans",sans-serif;font-size:9px}
+.account{position:relative}.acct{width:39px;height:39px;border-radius:50%;background:#ffffff08;border:1px solid #ffffff18;color:#ddd;cursor:pointer}.menu{position:absolute;right:0;top:48px;width:205px;padding:8px;border:1px solid #ffffff14;border-radius:15px;background:#130e13;box-shadow:0 20px 50px #0008;display:none}.account.open .menu{display:block}.menu button,.menu a{display:block;width:100%;text-align:left;background:none;color:#c9bdc4;padding:10px;border-radius:9px;font-size:11px;cursor:pointer}.menu button:hover,.menu a:hover{background:#ffffff0c;color:#fff}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 70px}.eyebrow{color:#927e8c;text-transform:uppercase;letter-spacing:6px;font-size:9px;margin-bottom:25px}.hero h1{font-size:clamp(68px,12vw,150px);line-height:.8;letter-spacing:-3px;font-weight:500}.hero h1 span{color:#d9b2aa}.line{width:90px;height:1px;background:#786573;margin:35px auto}.hero p{max-width:650px;margin:auto;color:#b3a6b0;font:italic 22px "Cormorant Garamond",serif}.credit{margin-top:23px;color:#827580;font-size:10px}.credit b{color:#d6c0c7}.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}.pill{padding:11px 21px;border:1px solid #ffffff18;border-radius:100px;background:#ffffff07;color:#ddd;cursor:pointer;font-size:10px}.pill.primary{background:#e4b1a51a;color:#e9c3ba;border-color:#e4b1a552}
+section{width:min(1120px,100%);margin:auto;padding:100px 25px}.label{text-align:center;color:#897584;text-transform:uppercase;letter-spacing:4px;font-size:9px}.section-title{text-align:center;font-size:62px;margin:5px 0 38px;letter-spacing:-.5px}
+.community-intro{text-align:center;color:#958791;font-size:12px;max-width:650px;margin:-22px auto 30px}.postbox{padding:24px;border:1px solid #ffffff12;border-radius:23px;background:#ffffff05;margin-bottom:28px}.posthead{display:flex;align-items:center;gap:10px;margin-bottom:16px}.avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;border:1px solid #e8b6a94d;color:#e3b3a8;background:#e8b6a90d;font:20px "Cormorant Garamond",serif}.posthead b{font-size:12px;display:block}.posthead small{font-size:9px;color:#766974}.postbox textarea{min-height:125px;resize:vertical;font:20px "Cormorant Garamond",serif}.posttools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:13px;flex-wrap:wrap}.photo{padding:9px 14px;border:1px solid #ffffff12;border-radius:100px;color:#b6a5ad;cursor:pointer;font-size:10px}.photo input{display:none}.postbtn{padding:10px 20px;border-radius:100px;background:#e4b1a5;color:#201416;font-size:10px;font-weight:700;cursor:pointer}.filename{color:#756873;font-size:9px}
+.feedtools{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}.search{max-width:340px;border-radius:100px;padding:11px 16px;font-size:10px}.count{color:#756873;font-size:10px}
+.posts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.post{overflow:hidden;border:1px solid #ffffff12;border-radius:21px;background:#ffffff04}.post img{display:block;width:100%;max-height:330px;object-fit:cover}.postbody{padding:22px}.author{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.authorleft{display:flex;align-items:center;gap:9px}.authorav{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#db9e9214;color:#dca79c;font-size:11px}.author small{display:block;color:#756873;font-size:8px}.author b{font-size:11px}.delete{background:none;color:#675a63;cursor:pointer;font-size:9px}.posttext{white-space:pre-line;color:#d6c8ce;font:23px/1.5 "Cormorant Garamond",serif}.postfoot{display:flex;justify-content:space-between;border-top:1px solid #ffffff0d;margin-top:19px;padding-top:14px}.like{background:none;color:#8c7b85;cursor:pointer;font-size:12px}.like.liked{color:#e4a69b}.date{color:#675b64;font-size:8px}.empty{padding:60px;text-align:center;border:1px dashed #ffffff18;border-radius:20px;color:#746771}.empty b{display:block;font:27px "Cormorant Garamond",serif;color:#aa9aa3}
+.featured{text-align:center;border-top:1px solid #ffffff10;border-bottom:1px solid #ffffff10;padding:70px 20px}.quote{font:italic 50px/1.25 "Cormorant Garamond",serif;max-width:850px;margin:15px auto}.by{color:#806d7b;font-size:9px;letter-spacing:4px;text-transform:uppercase}
+.poetry{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.poem{padding:27px;min-height:300px;border:1px solid #ffffff10;border-radius:20px;background:#ffffff04}.tag{color:#8e717b;font-size:8px;letter-spacing:2px;text-transform:uppercase}.poem h3{font:italic 500 28px "Cormorant Garamond",serif;margin:18px 0 13px}.poem p{white-space:pre-line;color:#a99ca5;font:16px/1.8 "Cormorant Garamond",serif}.poem small{display:block;color:#756773;font-size:9px;margin-top:20px}
+.about{text-align:center;max-width:850px}.about p{color:#9b8c96;font:22px/1.7 "Cormorant Garamond",serif}.people{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:25px 0}.person{padding:13px 19px;border:1px solid #ffffff12;border-radius:100px;background:#ffffff04}.person b{font-size:11px}.person span{display:block;color:#887a85;font-size:8px;letter-spacing:1px;text-transform:uppercase}.ig{display:inline-block;margin-top:8px;padding:11px 20px;border:1px solid #ffffff18;border-radius:100px;color:#d8b5b0;font-size:10px}
+footer{text-align:center;padding:45px 20px;border-top:1px solid #ffffff0d}footer strong{font-size:27px;letter-spacing:.2px}footer p{color:#62565f;font-size:9px;margin-top:7px}
+#toast{position:fixed;left:50%;bottom:23px;z-index:10000;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#191015f7;color:#f3e7e3;border:1px solid #e8b6a933;border-radius:100px;padding:11px 17px;font-size:11px;transition:.3s}#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.navlinks,.navuser{display:none}.posts{grid-template-columns:1fr}.poetry{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){section{padding:78px 18px}.hero h1{font-size:62px}.hero p{font-size:19px}.section-title{font-size:46px}.poetry{grid-template-columns:1fr}.social{grid-template-columns:1fr}.quote{font-size:32px}.postbox{padding:18px}}
+
+/* ===== EchosOfInk — Premium Motion Layer ===== */
+:root{
+  --eoi-glow: rgba(196, 153, 110, .20);
+  --eoi-glow-strong: rgba(214, 171, 126, .34);
+}
+html{scroll-behavior:smooth}
+body{
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(110,55,70,.18), transparent 30%),
+    radial-gradient(circle at 85% 25%, rgba(160,105,78,.10), transparent 28%),
+    radial-gradient(circle at 50% 90%, rgba(90,35,55,.16), transparent 32%),
+    #10090d;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(210,165,125,.07), transparent 16%),
+    radial-gradient(circle at 70% 65%, rgba(120,65,85,.09), transparent 18%);
+  animation:eoiAura 16s ease-in-out infinite alternate;
+}
+body::after{
+  content:"";
+  position:fixed;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  left:-90px;
+  top:18%;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(circle, rgba(196,153,110,.10), transparent 68%);
+  filter:blur(12px);
+  animation:eoiFloat 11s ease-in-out infinite;
+}
+@keyframes eoiAura{
+  0%{transform:translate3d(-2%, -1%,0) scale(1)}
+  100%{transform:translate3d(3%, 2%,0) scale(1.08)}
+}
+@keyframes eoiFloat{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(75vw,18vh,0)}
+}
+@keyframes eoiReveal{
+  from{opacity:0;transform:translateY(18px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes eoiShimmer{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+@keyframes eoiPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(196,153,110,0)}
+  50%{box-shadow:0 0 34px 2px rgba(196,153,110,.13)}
+}
+@keyframes eoiDrift{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-7px) rotate(.4deg)}
+}
+
+/* Premium wordmark */
+.logo, .auth-brand h1, .hero h1, .section-title, .footer-brand{
+  background:linear-gradient(110deg,#f3e4d3 0%,#fff8ee 24%,#cda47d 48%,#fff4e7 67%,#f0d6ba 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:eoiShimmer 9s linear infinite;
+  text-shadow:0 0 28px rgba(196,153,110,.07);
+}
+.logo{
+  letter-spacing:.025em;
+  transition:transform .35s ease, filter .35s ease;
+}
+.logo:hover{
+  transform:translateY(-1px) scale(1.015);
+  filter:drop-shadow(0 8px 20px rgba(196,153,110,.18));
+}
+
+/* Auth entrance */
+.auth-card{
+  animation:eoiReveal .9s cubic-bezier(.2,.8,.2,1) both, eoiPulse 5s ease-in-out infinite 1s;
+}
+.auth-brand{
+  animation:eoiReveal .8s ease both;
+}
+
+/* Hero entrance */
+.hero{
+  position:relative;
+  isolation:isolate;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:460px;
+  height:460px;
+  left:50%;
+  top:25%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(196,153,110,.08), transparent 67%);
+  filter:blur(4px);
+  z-index:-1;
+  animation:eoiPulse 7s ease-in-out infinite;
+}
+.hero h1{animation:eoiReveal 1s .08s both, eoiShimmer 10s linear infinite}
+.hero p{animation:eoiReveal 1s .22s both}
+.hero .hero-actions{animation:eoiReveal 1s .36s both}
+
+/* Cards feel alive without being flashy */
+.card, .post-card, .quote-card, .archive-card, .about-card{
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s ease,
+             box-shadow .45s ease, background .45s ease;
+}
+.card:hover, .post-card:hover, .quote-card:hover, .archive-card:hover, .about-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(210,165,125,.24);
+  box-shadow:0 20px 60px rgba(0,0,0,.28), 0 0 35px var(--eoi-glow);
+}
+
+/* Buttons */
+button, .btn, a{
+  transition:transform .25s ease, box-shadow .3s ease, border-color .3s ease, opacity .25s ease;
+}
+button:hover, .btn:hover{
+  transform:translateY(-2px);
+}
+button:active, .btn:active{
+  transform:translateY(0) scale(.98);
+}
+
+/* Community/section reveal */
+section{
+  animation:eoiReveal .9s ease both;
+}
+
+/* Tiny floating accent for decorative elements */
+.decorative, .eyebrow, .section-kicker{
+  animation:eoiDrift 5s ease-in-out infinite;
+}
+
+/* ===== Premium Founder / Manager Showcase ===== */
+.eoi-credits{
+  width:min(760px, calc(100% - 32px));
+  margin:56px auto 18px;
+  padding:26px 28px;
+  position:relative;
+  text-align:center;
+  border:1px solid rgba(214,171,126,.16);
+  border-radius:22px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.045), rgba(255,255,255,.012)),
+    rgba(20,10,15,.72);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 45px rgba(196,153,110,.055);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  overflow:hidden;
+}
+.eoi-credits::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg, transparent 20%, rgba(255,238,218,.07) 50%, transparent 80%);
+  transform:translateX(-110%);
+  animation:eoiCreditSweep 8s ease-in-out infinite;
+}
+.eoi-credits::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  top:-130px;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:rgba(196,153,110,.10);
+  filter:blur(35px);
+  pointer-events:none;
+}
+@keyframes eoiCreditSweep{
+  0%,55%{transform:translateX(-110%)}
+  78%,100%{transform:translateX(110%)}
+}
+.eoi-credit-label{
+  position:relative;
+  z-index:1;
+  margin:0 0 15px;
+  font-family:"DM Sans",sans-serif;
+  font-size:9px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(239,224,209,.42);
+}
+.eoi-credit-grid{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+}
+.eoi-person{
+  flex:1;
+  min-width:0;
+  padding:4px 26px;
+}
+.eoi-person + .eoi-person{
+  border-left:1px solid rgba(214,171,126,.13);
+}
+.eoi-role{
+  margin:0 0 7px;
+  font-family:"DM Sans",sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(239,224,209,.43);
+}
+.eoi-name{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
+  line-height:1;
+  font-weight:600;
+  letter-spacing:.02em;
+  background:linear-gradient(110deg,#f0d9bf,#fff8ee,#cba17a,#f3dfca);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:eoiShimmer 8s linear infinite;
+}
+.eoi-mini{
+  margin:8px 0 0;
+  font-family:"DM Sans",sans-serif;
+  font-size:9px;
+  letter-spacing:.09em;
+  color:rgba(239,224,209,.30);
+}
+.eoi-credit-line{
+  width:46px;
+  height:1px;
+  margin:18px auto 0;
+  background:linear-gradient(90deg,transparent,rgba(214,171,126,.55),transparent);
+}
+@media(max-width:560px){
+  .eoi-credits{padding:23px 14px}
+  .eoi-person{padding:4px 12px}
+  .eoi-name{font-size:25px}
+  .eoi-person + .eoi-person{border-left:0}
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div id="authGate">
+  <div class="auth">
+    <div class="brand"><h1>EchosOfInk</h1><p>@echoesofink19 · poetry &amp; thoughts</p></div>
+    <div class="card">
+      <div class="tabs"><button class="tab active" data-tab="login">Login</button><button class="tab" data-tab="register">Register</button></div>
+      <div id="login" class="form active">
+        <h2>Welcome back.</h2><p class="sub">Enter the quiet side of your thoughts.</p>
+        <div class="field"><label>Email</label><input id="loginEmail" type="email" placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input id="loginPass" type="password" placeholder="••••••••"></div>
+        <button class="primary" id="loginBtn">Login &amp; Enter</button>
+        <div class="divider">or continue with</div>
+        <div class="social">
+          <button id="googleBtn">G&nbsp; Continue with Google</button>
+          <button id="appleBtn"><svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.2.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3-.8s1.8.8 3 .8c1.2 0 2-1.1 2.8-2.3.9-1.3 1.3-2.7 1.3-2.8-.1 0-2.7-1-2.7-3.5zM14.5 6.2c.6-.8 1-1.9.9-3-1 .1-2.1.7-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg> Continue with Apple</button>
+        </div>
+      </div>
+      <div id="register" class="form">
+        <h2>Create your space.</h2><p class="sub">Join EchosOfInk and share what words cannot say.</p>
+        <div class="field"><label>Username</label><input id="regName" placeholder="yourname"></div>
+        <div class="field"><label>Email</label><input id="regEmail" type="email" placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input id="regPass" type="password" placeholder="Minimum 6 characters"></div>
+        <button class="primary" id="registerBtn">Register &amp; Enter</button>
+      </div>
+      <p class="note">Demo mode works without Firebase. For real cross-device accounts, posts and photos, add your Firebase configuration in the script at the bottom.</p>
+    </div>
+  </div>
+</div>
+
+<div id="site">
+<nav>
+  <a class="logo" href="#home">EchosOfInk<span class="logo-dot"></span></a>
+  <div class="navlinks"><a href="#home">HOME</a><a href="#community">COMMUNITY</a><a href="#poetry">POETRY</a><a href="#about">ABOUT</a></div>
+  <div style="display:flex;align-items:center;gap:12px"><span class="navuser" id="navUser"></span><div class="account"><button class="acct" id="acctBtn">✦</button><div class="menu"><a href="#community">Create a post</a><a href="#about">About EchosOfInk</a><button id="signout">Sign out</button></div></div></div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">A quiet place for loud feelings</div>
+    <h1>Echos <span>of Ink</span></h1>
+    <div class="line"></div>
+    <p>“Some feelings don't ask to be understood. They only ask to be written.”</p>
+    <div class="actions"><a class="pill primary" href="#community">Enter Community</a><a class="pill" href="#about">Meet the Team</a></div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="label">The community</div><h2 class="section-title">Write. Feel. Share.</h2>
+  <p class="community-intro">A shared corner for poems, quotes, midnight thoughts and little pieces of life. Every logged-in member can add their own words.</p>
+  <div class="postbox">
+    <div class="posthead"><div class="avatar" id="createAvatar">E</div><div><b id="createName">Writer</b><small>Share something from your world</small></div></div>
+    <textarea id="postText" placeholder="Write a poem, quote, thought or a few honest lines..."></textarea>
+    <div class="posttools">
+      <label class="photo">＋ Add photo <input id="postImage" type="file" accept="image/*"></label><span class="filename" id="filename">No photo selected</span><button class="postbtn" id="postBtn">Publish post</button>
+    </div>
+  </div>
+  <div class="feedtools"><input class="search" id="search" placeholder="Search the community..."><span class="count" id="count">0 posts</span></div>
+  <div class="posts" id="posts"></div>
+</section>
+
+<div class="featured"><div class="quote">“There are stories hidden in the pauses between our words.”</div><div class="by">EchosOfInk · @echoesofink19</div></div>
+
+<section id="poetry">
+  <div class="label">Selected pages</div><h2 class="section-title">From the archive</h2>
+  <div class="poetry">
+    <article class="poem"><span class="tag">Midnight</span><h3>After everyone sleeps</h3><p>After everyone sleeps,
+the heart becomes honest.
+It remembers names,
+unfinished sentences,
+and the dreams we hide from daylight.</p><small>— EchosOfInk</small></article>
+    <article class="poem"><span class="tag">Hindi · एहसास</span><h3>कुछ बातें</h3><p>कुछ बातें कही नहीं जातीं,
+बस आँखों में ठहर जाती हैं।
+कुछ लोग दूर होकर भी,
+दिल के सबसे पास रह जाते हैं।</p><small>— EchosOfInk</small></article>
+    <article class="poem"><span class="tag">English</span><h3>Still here</h3><p>I am learning
+that healing is not forgetting.
+It is remembering
+without breaking again.</p><small>— EchosOfInk</small></article>
+  </div>
+</section>
+
+<section id="about"><div class="about">
+  <div class="label">Behind the ink</div><h2 class="section-title">About us</h2>
+  <p>EchosOfInk is a quiet creative space for poetry, feelings, midnight thoughts and honest expression — a place where every line can leave an echo.</p>
+  <a class="ig" href="https://www.instagram.com/echoesofink19/" target="_blank">@echoesofink19 on Instagram</a>
+</div></section>
+</main>
+<footer><strong>EchosOfInk</strong><p>@echoesofink19</p><p>© 2026 EchosOfInk. A home for words that deserve to be heard.</p>
+<div class="eoi-credits">
+  <p class="eoi-credit-label">The people behind EchosOfInk</p>
+  <div class="eoi-credit-grid">
+    <div class="eoi-person">
+      <p class="eoi-role">Founder</p>
+      <p class="eoi-name">Shifss</p>
+      <p class="eoi-mini">Vision · Voice · Origin</p>
+    </div>
+    <div class="eoi-person">
+      <p class="eoi-role">Managed by</p>
+      <p class="eoi-name">Khushiiee</p>
+      <p class="eoi-mini">Curation · Community · Direction</p>
+    </div>
+  </div>
+  <div class="eoi-credit-line"></div>
+</div>
+</footer>
+</div>
+<div id="toast"></div>
+
+<script type="module">
+/* =========================================================
+   FIREBASE SETUP
+   Paste your real Firebase web config inside firebaseConfig
+   when you want shared login/posts/photos across devices.
+   Demo mode works immediately without Firebase.
+========================================================= */
+const firebaseConfig={
+  apiKey:"PASTE_YOUR_API_KEY_HERE",
+  authDomain:"PASTE_YOUR_PROJECT.firebaseapp.com",
+  projectId:"PASTE_YOUR_PROJECT_ID",
+  storageBucket:"PASTE_YOUR_STORAGE_BUCKET",
+  messagingSenderId:"PASTE_YOUR_MESSAGING_SENDER_ID",
+  appId:"PASTE_YOUR_APP_ID"
+};
+
+let firebaseReady=false,auth=null,db=null,storage=null,currentUser=null;
+const demoAccountsKey="eoi_accounts_v2",demoSessionKey="eoi_session_v2",demoPostsKey="eoi_posts_v2";
+const $=id=>document.getElementById(id);
+const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)};
+const initials=n=>(n||"E").trim().slice(0,2).toUpperCase();
+
+function getAccounts(){try{return JSON.parse(localStorage.getItem(demoAccountsKey)||"[]")}catch{return[]}}
+function saveAccounts(a){localStorage.setItem(demoAccountsKey,JSON.stringify(a))}
+function getPosts(){try{return JSON.parse(localStorage.getItem(demoPostsKey)||"[]")}catch{return[]}}
+function savePosts(p){localStorage.setItem(demoPostsKey,JSON.stringify(p))}
+function session(){try{return JSON.parse(localStorage.getItem(demoSessionKey)||"null")}catch{return null}}
+
+async function loadFirebase(){
+  if(firebaseConfig.apiKey.startsWith("PASTE_")) return;
+  try{
+    const app=await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js");
+    const au=await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js");
+    const fs=await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js");
+    const st=await import("https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js");
+    const fb=app.initializeApp(firebaseConfig);auth=au.getAuth(fb);db=fs.getFirestore(fb);storage=st.getStorage(fb);
+    window.FB={...au,...fs,...st};firebaseReady=true;
+    au.onAuthStateChanged(auth,u=>{if(u){currentUser={uid:u.uid,name:u.displayName||u.email?.split("@")[0]||"Writer",email:u.email};enterSite()}});
+  }catch(e){console.warn("Firebase not connected:",e)}
+}
+function enterSite(){
+  $("authGate").classList.add("hidden");$("site").classList.add("on");
+  const name=currentUser?.name||"Writer";$("navUser").textContent="@"+name;$("createName").textContent=name;$("createAvatar").textContent=initials(name);renderPosts();
+}
+function leaveSite(){
+  $("authGate").classList.remove("hidden");$("site").classList.remove("on");currentUser=null;
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".form").forEach(x=>x.classList.remove("active"));b.classList.add("active");$(b.dataset.tab).classList.add("active")});
+
+$("loginBtn").onclick=async()=>{
+  const email=$("loginEmail").value.trim().toLowerCase(),pass=$("loginPass").value;
+  if(!email||!pass)return toast("Email and password required.");
+  if(firebaseReady){try{const r=await window.FB.signInWithEmailAndPassword(auth,email,pass);currentUser={uid:r.user.uid,name:r.user.displayName||email.split("@")[0],email};enterSite();}catch(e){toast(e.message.replace("Firebase: ",""))}}
+  else{const a=getAccounts().find(x=>x.email===email&&x.pass===pass);if(!a)return toast("Demo account not found. Register first.");currentUser={uid:a.uid,name:a.name,email:a.email};localStorage.setItem(demoSessionKey,JSON.stringify(currentUser));enterSite();toast("Welcome back, "+a.name+" ✦")}
+};
+$("registerBtn").onclick=async()=>{
+  const name=$("regName").value.trim(),email=$("regEmail").value.trim().toLowerCase(),pass=$("regPass").value;
+  if(name.length<2||!email||pass.length<6)return toast("Enter username, valid email and 6+ character password.");
+  if(firebaseReady){try{const r=await window.FB.createUserWithEmailAndPassword(auth,email,pass);await window.FB.updateProfile(r.user,{displayName:name});currentUser={uid:r.user.uid,name,email};enterSite();}catch(e){toast(e.message.replace("Firebase: ",""))}}
+  else{let a=getAccounts();if(a.some(x=>x.email===email))return toast("Email already registered.");const u={uid:"demo_"+Date.now(),name,email,pass};a.push(u);saveAccounts(a);currentUser={uid:u.uid,name,email};localStorage.setItem(demoSessionKey,JSON.stringify(currentUser));enterSite();toast("Account created ✦")}
+};
+$("googleBtn").onclick=async()=>{
+  if(firebaseReady){try{const r=await window.FB.signInWithPopup(auth,new window.FB.GoogleAuthProvider());currentUser={uid:r.user.uid,name:r.user.displayName||"Writer",email:r.user.email};enterSite()}catch(e){toast(e.message.replace("Firebase: ",""))}}
+  else{currentUser={uid:"google_demo",name:"Google Writer",email:"google@demo.local"};localStorage.setItem(demoSessionKey,JSON.stringify(currentUser));enterSite();toast("Demo Google login successful ✦")}
+};
+$("appleBtn").onclick=async()=>{
+  if(firebaseReady){try{const p=new window.FB.OAuthProvider("apple.com");const r=await window.FB.signInWithPopup(auth,p);currentUser={uid:r.user.uid,name:r.user.displayName||"Apple Writer",email:r.user.email};enterSite()}catch(e){toast(e.message.replace("Firebase: ",""))}}
+  else{currentUser={uid:"apple_demo",name:"Apple Writer",email:"apple@demo.local"};localStorage.setItem(demoSessionKey,JSON.stringify(currentUser));enterSite();toast("Demo Apple login successful ✦")}
+};
+$("signout").onclick=async()=>{
+  if(firebaseReady&&auth)try{await window.FB.signOut(auth)}catch{}
+  localStorage.removeItem(demoSessionKey);leaveSite();toast("Signed out.");
+};
+$("acctBtn").onclick=e=>{e.stopPropagation();$("acctBtn").parentElement.classList.toggle("open")};
+document.addEventListener("click",e=>{if(!e.target.closest(".account"))document.querySelector(".account")?.classList.remove("open")});
+$("postImage").onchange=e=>$("filename").textContent=e.target.files[0]?.name||"No photo selected";
+
+async function addPost(){
+  const text=$("postText").value.trim(),file=$("postImage").files[0];
+  if(!text&&!file)return toast("Write something or choose a photo first.");
+  if(firebaseReady&&db){
+    try{
+      let imageUrl="";
+      if(file){const ref=window.FB.ref(storage,"posts/"+currentUser.uid+"/"+Date.now()+"_"+file.name);await window.FB.uploadBytes(ref,file);imageUrl=await window.FB.getDownloadURL(ref)}
+      await window.FB.addDoc(window.FB.collection(db,"posts"),{uid:currentUser.uid,username:currentUser.name,text,imageUrl,likes:[],createdAt:window.FB.serverTimestamp()});
+      $("postText").value="";$("postImage").value="";$("filename").textContent="No photo selected";toast("Post published ✦");renderPosts();return;
+    }catch(e){toast("Firebase post error: "+e.message);return}
+  }
+  const p=getPosts();p.unshift({id:"p_"+Date.now(),uid:currentUser.uid,username:currentUser.name,text,imageUrl:file?URL.createObjectURL(file):"",likes:[],createdAt:Date.now()});
+  savePosts(p);$("postText").value="";$("postImage").value="";$("filename").textContent="No photo selected";renderPosts();toast("Post published ✦");
+}
+$("postBtn").onclick=addPost;
+async function likePost(id){
+  if(firebaseReady&&db){const ref=window.FB.doc(db,"posts",id);const snap=await window.FB.getDoc(ref);if(!snap.exists())return;const a=snap.data().likes||[],has=a.includes(currentUser.uid);await window.FB.updateDoc(ref,{likes:has?window.FB.arrayRemove(currentUser.uid):window.FB.arrayUnion(currentUser.uid)});renderPosts();return}
+  const p=getPosts(),x=p.find(q=>q.id===id);if(!x)return;x.likes=x.likes||[];const i=x.likes.indexOf(currentUser.uid);i>=0?x.likes.splice(i,1):x.likes.push(currentUser.uid);savePosts(p);renderPosts();
+}
+async function deletePost(id){
+  if(!confirm("Delete your post?"))return;
+  if(firebaseReady&&db){await window.FB.deleteDoc(window.FB.doc(db,"posts",id));renderPosts();return}
+  savePosts(getPosts().filter(x=>x.id!==id));renderPosts();
+}
+async function renderPosts(){
+  let list=[];
+  if(firebaseReady&&db){try{const s=await window.FB.getDocs(window.FB.query(window.FB.collection(db,"posts"),window.FB.orderBy("createdAt","desc")));list=s.docs.map(d=>({id:d.id,...d.data(),createdAt:d.data().createdAt?.toMillis?.()||Date.now()}))}catch(e){console.warn(e)}}
+  else list=getPosts();
+  const q=$("search").value.trim().toLowerCase();list=list.filter(p=>(p.text+" "+p.username).toLowerCase().includes(q));
+  $("count").textContent=list.length+" post"+(list.length===1?"":"s");
+  $("posts").innerHTML=list.length?list.map(p=>{
+    const own=p.uid===currentUser?.uid,liked=(p.likes||[]).includes(currentUser?.uid);
+    return `<article class="post">${p.imageUrl?`<img src="${p.imageUrl}" alt="Post photo">`:""}<div class="postbody"><div class="author"><div class="authorleft"><div class="authorav">${initials(p.username)}</div><div><b>${escapeHtml(p.username||"Writer")}</b><small>${new Date(p.createdAt||Date.now()).toLocaleString()}</small></div></div>${own?`<button class="delete" onclick="deletePost('${p.id}')">Delete</button>`:""}</div><div class="posttext">${escapeHtml(p.text||"")}</div><div class="postfoot"><button class="like ${liked?"liked":""}" onclick="likePost('${p.id}')">♡ ${p.likes?.length||0} likes</button><span class="date">EchosOfInk</span></div></div></article>`;
+  }).join(""):`<div class="empty" style="grid-column:1/-1"><b>No words here yet.</b>Be the first to leave an echo.</div>`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+$("search").oninput=renderPosts;
+window.likePost=likePost;window.deletePost=deletePost;
+
+const old=session();if(old){currentUser=old;enterSite()}loadFirebase();
+</script>
+</body>
+</html>
